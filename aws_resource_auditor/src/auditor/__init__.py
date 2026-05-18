@@ -1,1 +1,0 @@
-"""AWS resource auditor package."""
