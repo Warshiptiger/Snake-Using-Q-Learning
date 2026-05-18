@@ -1,0 +1,19 @@
+AWS Resource Auditor Summary
+
+Resources scanned: 7
+Findings: 8
+
+Findings by severity:
+- medium: 6
+- low: 1
+- high: 1
+
+Top findings:
+- [MEDIUM] ec2 i-0abc1234dev2: Missing required tags: Owner, Project
+- [MEDIUM] ec2 i-0abc1234dev2: EC2 instance has been stopped for 37 days.
+- [MEDIUM] ebs vol-0111222333: Missing required tags: Owner, Environment
+- [MEDIUM] ebs vol-0111222333: EBS volume is unattached.
+- [MEDIUM] snapshot snap-0999888777: Missing required tags: Project
+- [LOW] snapshot snap-0999888777: Snapshot is 143 days old.
+- [MEDIUM] s3 customer-assets-demo: Missing required tags: Environment
+- [HIGH] s3 customer-assets-demo: S3 bucket appears to allow public access.
