@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake Game with Q-Learning</title>
+  <meta name="description" content="A Python Snake game that learns using tabular Q-learning with an 11-feature state and a Tkinter visualizer.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Python + Reinforcement Learning</p>
+        <h1>Snake Game with Q-Learning</h1>
+        <p class="hero-text">
+          I built this project to understand how far a simple table-based reinforcement learning
+          setup can go without using a neural network. The snake learns by updating Q-values from rewards
+          and eventually starts making better movement decisions on its own.
+        </p>
+        <div class="hero-actions">
+          <a class="primary-button" href="https://github.com/Warshiptiger/Snake-Using-Q-Learning">View Repository</a>
+          <a class="ghost-button" href="#run">How To Run</a>
+        </div>
+      </div>
+      <aside class="hero-panel">
+        <div class="terminal-card">
+          <div class="terminal-header">
+            <span></span><span></span><span></span>
+          </div>
+          <pre><code>python snake_q_learning.py --cli-train 1000 --seed 7
+
+Episode  400 | score= 7 | best= 7
+Episode  700 | score= 5 | best=29
+Episode 1000 | score=15 | best=29
+
+Q-table + 11-feature state
+4 actions: straight / left / right / U-turn</code></pre>
+        </div>
+      </aside>
+    </header>
+
+    <main>
+      <section class="grid-section">
+        <article class="card">
+          <h2>What It Is</h2>
+          <p>
+            A Snake game written in Python where the agent learns with classic Q-learning instead of a deep learning model.
+          </p>
+        </article>
+        <article class="card">
+          <h2>How It Learns</h2>
+          <p>
+            The game state is represented using 11 hand-crafted features, and the agent updates a Q-table after every move.
+          </p>
+        </article>
+        <article class="card">
+          <h2>Why I Built It</h2>
+          <p>
+            I wanted a reinforcement learning project that stayed readable and easy to reason about from end to end.
+          </p>
+        </article>
+      </section>
+
+      <section class="feature-section">
+        <div class="section-heading">
+          <p class="eyebrow">Core Setup</p>
+          <h2>Project details</h2>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-item">
+            <h3>State Space</h3>
+            <p>Uses 11 binary features covering danger detection, current direction, and food direction.</p>
+          </div>
+          <div class="feature-item">
+            <h3>Action Space</h3>
+            <p>The agent chooses between 4 actions: move straight, turn left, turn right, or make a U-turn.</p>
+          </div>
+          <div class="feature-item">
+            <h3>Learning Loop</h3>
+            <p>Q-values are updated from rewards using the standard Q-learning equation with epsilon-greedy exploration.</p>
+          </div>
+          <div class="feature-item">
+            <h3>Interface</h3>
+            <p>A Tkinter app lets you train the agent, watch the current policy, and reset the Q-table.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="architecture-section">
+        <div class="section-heading">
+          <p class="eyebrow">Flow</p>
+          <h2>How the game loop works</h2>
+        </div>
+        <div class="architecture-layout">
+          <div class="architecture-flow">
+            <div class="flow-box">Read State</div>
+            <div class="flow-arrow">-&gt;</div>
+            <div class="flow-box">Choose Action</div>
+            <div class="flow-arrow">-&gt;</div>
+            <div class="flow-box">Move Snake</div>
+            <div class="flow-arrow">-&gt;</div>
+            <div class="flow-box">Get Reward</div>
+            <div class="flow-arrow">-&gt;</div>
+            <div class="flow-box">Update Q-Table</div>
+          </div>
+          <div class="architecture-notes">
+            <p>The project supports both a visual mode and a CLI training mode.</p>
+            <ul>
+              <li>Visual Tkinter window for interactive training and playback</li>
+              <li>CLI training mode for quick tests and longer runs</li>
+              <li>Table-based Q-learning with no neural network dependency</li>
+              <li>Simple code structure to keep the learning logic understandable</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="services-section">
+        <div class="section-heading">
+          <p class="eyebrow">Highlights</p>
+          <h2>What's included</h2>
+        </div>
+        <div class="pill-row">
+          <span>Python</span>
+          <span>Q-Learning</span>
+          <span>Tkinter</span>
+          <span>11-Feature State</span>
+          <span>Q-Table</span>
+          <span>CLI Training</span>
+        </div>
+      </section>
+
+      <section class="run-section" id="run">
+        <div class="section-heading">
+          <p class="eyebrow">Run</p>
+          <h2>Try the project</h2>
+        </div>
+        <div class="run-grid">
+          <div class="run-card">
+            <h3>Open the Game</h3>
+            <pre><code>python snake_q_learning.py</code></pre>
+            <p>Launches the Tkinter window so you can train the agent and watch the learned policy.</p>
+          </div>
+          <div class="run-card">
+            <h3>Train in CLI</h3>
+            <pre><code>python snake_q_learning.py --cli-train 1000</code></pre>
+            <p>Runs training in the terminal and prints progress metrics like score, epsilon, and known states.</p>
+          </div>
+          <div class="run-card">
+            <h3>Custom Example</h3>
+            <pre><code>python snake_q_learning.py --cli-train 1000 --width 12 --height 12 --seed 7</code></pre>
+            <p>Useful when you want reproducible training runs or want to test different board sizes.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="output-section">
+        <div class="section-heading">
+          <p class="eyebrow">Learning Rule</p>
+          <h2>Q-value update</h2>
+        </div>
+        <div class="formula-card">
+          <pre><code>Q(s, a) = Q(s, a) + alpha * (reward + gamma * max(Q(s', *)) - Q(s, a))</code></pre>
+          <p>
+            Here, <code>alpha</code> controls the learning rate, <code>gamma</code> controls how much future reward matters,
+            and <code>epsilon</code> controls exploration during training.
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
